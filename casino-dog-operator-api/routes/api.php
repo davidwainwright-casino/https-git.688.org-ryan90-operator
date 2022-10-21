@@ -23,9 +23,6 @@ Route::middleware('api', 'throttle:5000,1')->prefix('api/data/')->group(function
     Route::get('/games', [APIController::class, 'games_all']);
 });
 
-
-
-
 Route::middleware('api', 'throttle:5000,1')->prefix('api/')->group(function () {
     Route::get('/games', [APIController::class, 'games']);
 	Route::get('/games/{slug}', [APIController::class, 'games_info']);
@@ -40,14 +37,14 @@ Route::middleware('api', 'throttle:5000,1')->prefix('api/')->group(function () {
 	});
 });
 
-
-
-Route::middleware('api', 'throttle:5000,1')->prefix('api/playground/')->group(function () {
+Route::middleware('api', 'throttle:50,1')->prefix('api/playground/')->group(function () {
     Route::get('/gameslist', [PlaygroundPages::class, 'view_gameslist']);
 	Route::get('/viewer', [PlaygroundPages::class, 'view_gameframe']);
 	Route::get('/iframe.js', [iFrameManager::class, 'load']);
 	Route::get('/respin-viewer', [ExampleRespinController::class, 'show']);
+	Route::any('/gregory-iframe', function (Request $request) {
+		return view('wainwright::redirect-test');
+	});
 });
 
-
-Route::middleware('api', 'throttle:50,1')->post('api/playground/toggle_respin', [ExampleRespinController::class, 'toggle_respin']);
+Route::middleware('api', 'throttle:25,1')->post('api/playground/toggle_respin', [ExampleRespinController::class, 'toggle_respin']);

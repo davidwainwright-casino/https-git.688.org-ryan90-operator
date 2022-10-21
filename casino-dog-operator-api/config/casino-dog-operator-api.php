@@ -25,7 +25,7 @@ return [
     'api_url' => 'https://02-gameserver.777.dog', /* api_url is the base url to contact, it should not end with slash */
     'endpoints' => [
       'create_session' => 'https://02-gameserver.777.dog/api/createSession',
-      'toggle_respin' => 'https://02-gameserver.777.dog/api/toggle_respin',
+      'toggle_respin' => 'https://02-gameserver.777.dog/api/control/toggle_respin',
       'gameslist' => 'https://02-gameserver.777.dog/api/gameslist/all',
     ],
 ];
